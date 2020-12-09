@@ -14,9 +14,20 @@ let twoNumbers =
 
 let setMultiplication numbers = numbers |> Set.fold (*) 1
 
+let threeNumbers =
+    let ints = numbersFromFile
+    let intList = ints |> Seq.toList
+    let trips = List.allPairs intList (List.allPairs intList intList)
+    let corrects = trips |> List.filter (fun (a, (b, c)) -> (a + b + c) = 2020)
+                         |> List.head
+    corrects
+
 [<EntryPoint>]
 let main argv =
-    let result = twoNumbers |> setMultiplication
+    let partOneResult = twoNumbers |> setMultiplication
+    printf "%A\r\n" partOneResult
 
-    printf "%i" result
+    let partThreeResult = threeNumbers |> fun (a, (b, c)) -> a * b * c
+
+    printf "%A\r\n" partThreeResult
     0
