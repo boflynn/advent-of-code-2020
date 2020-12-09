@@ -53,7 +53,6 @@ let parsePasswords =
     let parts = lines |> Seq.map(Password)
     parts
 
-
 let parsePasswordsTwo = 
     let lines = readLines "./input.txt"
     let parts = lines |> Seq.map(PasswordTwo)
@@ -72,4 +71,4 @@ let main argv =
                                |> Seq.length
 
     printfn "%i" countTwo
-    0 // return an integer exit code
+    0

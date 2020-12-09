@@ -25,9 +25,9 @@ let threeNumbers =
 [<EntryPoint>]
 let main argv =
     let partOneResult = twoNumbers |> setMultiplication
-    printf "%A\r\n" partOneResult
+    printfn "%A" partOneResult
 
     let partThreeResult = threeNumbers |> fun (a, (b, c)) -> a * b * c
 
-    printf "%A\r\n" partThreeResult
+    printfn "%A" partThreeResult
     0
