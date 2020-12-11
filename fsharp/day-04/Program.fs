@@ -7,9 +7,11 @@ let passportFields = passportStrings
 let passportParts = passportFields
                               |> Seq.map(fun(a) -> a
                                                    |> Seq.map(fun(b) -> b.Split(':')))
+let isValidPassportField passportParts = not (Array.contains "cid" passportParts)
+
 [<EntryPoint>]
 let main argv =
-    passportParts |> Seq.map(fun(g) -> g |> Seq.filter(fun(a) -> (not (Array.contains "cid" a))))
+    passportParts |> Seq.map(fun(g) -> g |> Seq.filter(isValidPassportField))
                              |> Seq.filter(fun(g) -> (g |> Seq.length) = 7)
                              |> Seq.length
                              |> printfn "%A"
