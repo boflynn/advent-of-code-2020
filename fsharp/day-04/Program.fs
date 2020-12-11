@@ -7,7 +7,7 @@ let passportFields = passportStrings
 let passportParts = passportFields
                               |> Seq.map(fun(a) -> a
                                                    |> Seq.map(fun(b) -> b.Split(':')))
-let isValidPassportField passportParts = not (Array.contains "cid" passportParts)
+let isValidPassportField (passportParts:string[]) = passportParts.[0] <> "cid"
 
 [<EntryPoint>]
 let main argv =
