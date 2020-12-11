@@ -11,6 +11,11 @@ let seatIds = seatNumbers |> Seq.map(fun(a) -> System.Convert.ToInt32(a, 2))
 
 [<EntryPoint>]
 let main argv =
-    seatIds |> Seq.max
-            |> printfn "%A"
+    let sorted = seatIds |> Seq.toList |> List.sort
+    let first = sorted |> List.head
+    let last = sorted |> List.rev |> List.head
+    let actualSum = sorted |> Seq.sum
+    let expectedSum = (last - first + 1) * (first + last) / 2
+
+    printfn "%A" (expectedSum - actualSum)
     0
